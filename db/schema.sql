@@ -1,9 +1,9 @@
-DROP DATABASE IF EXISTS songs_dev;
+-- DROP DATABASE IF EXISTS d938gka1grmnf1;
+DROP TABLE IF EXISTS song;
 
-CREATE DATABASE songs_dev;
+\c d938gka1grmnf1;
 
-\c songs_dev;
-
+-- CREATE DATABASE d938gka1grmnf1;
 CREATE TABLE song (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
