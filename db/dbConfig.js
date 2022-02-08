@@ -9,6 +9,6 @@ const cn = {
 
 const cm2 = { connectionString: process.env.DATABASE_URL };
 
-const db = pgp(cn);
+const db = pgp(cm2);
 
 module.exports = db;
