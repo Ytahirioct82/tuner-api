@@ -7,7 +7,10 @@ const cn = {
   user: process.env.PG_USER,
 };
 
-const cm2 = { connectionString: process.env.DATABASE_URL };
+const cm2 = {
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false },
+};
 
 const db = pgp(cm2);
 
