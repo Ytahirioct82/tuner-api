@@ -35,10 +35,10 @@ const createSong = async (song) => {
 
 const editSong = async (id, song) => {
   try {
-    const { id, name, artist, album, time, is_favorite } = song;
+    const { id, name, artist, album, time, is_favorite, lyrics } = song;
     const editedSong = await db.one(
-      "UPDATE song SET name = $1, artist= $2, album= $3, time= $4, is_favorite= $5 WHERE id=$6 RETURNING *",
-      [name, artist, album, time, is_favorite, id]
+      "UPDATE song SET name = $1, artist= $2, album= $3, time= $4, is_favorite= $5, lyrics=$6 WHERE id=$7 RETURNING *",
+      [name, artist, album, time, is_favorite, lyrics, id]
     );
 
     return editedSong;
