@@ -1,11 +1,16 @@
 const express = require("express");
 const song = express.Router();
-const { getAllSongs, getSong, createSong, editSong, deleteSong } = require("../queries/songs");
+const { getAllSongs, getSong, createSong, editSong, deleteSong, getAllArtist } = require("../queries/songs");
 
 song.get("/", async (req, res) => {
-  console.log("running");
-  const songs = await getAllSongs();
-  console.log(songs);
+  console.log(req.query);
+  const { name } = req.query;
+  let songs = null;
+  if (!!name && name !== "All Artists") {
+    songs = await getAllArtist(name);
+  } else {
+    songs = await getAllSongs();
+  }
   res.status(200).json(songs);
 });
 
@@ -40,6 +45,7 @@ song.put("/:id", async (request, response) => {
 
 song.delete("/:id", async (request, response) => {
   const { id } = request.params;
+  console.log(id);
   const song = await deleteSong(id);
   if (id >= 1) {
     response.status(200).json(song);

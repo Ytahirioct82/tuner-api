@@ -12,6 +12,6 @@ const cm2 = {
   ssl: { rejectUnauthorized: false },
 };
 
-const db = pgp(cm2);
+const db = pgp(process.env.DB_CONFIG === "dev" ? cn : cm2);
 
 module.exports = db;
